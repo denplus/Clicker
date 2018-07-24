@@ -23,12 +23,12 @@ public class InputCounter : SingeltonMonoBehaviour<InputCounter> {
 		while (true) {
 
 #if UNITY_STANDALONE || UNITY_EDITOR
-			if (Input.GetMouseButtonDown (0)) {
+			if (Input.GetMouseButtonDown (0)) { // for test purpose
 				ScoreManager.Instance.PlayerScore++;
 				PlayerTouch (ScoreManager.Instance.PlayerScore);
 			}
-#elif UNITY_IOS || UNITY_ANDROID
-			if (Input.GetTouch(0).phase == TouchPhase.Began) {
+#else
+			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
 				ScoreManager.Instance.PlayerScore++;
 				PlayerTouch (ScoreManager.Instance.PlayerScore);
 			}
