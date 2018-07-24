@@ -21,18 +21,10 @@ public class InputCounter : SingeltonMonoBehaviour<InputCounter> {
 
 	public IEnumerator StartCountIEnumerator () {
 		while (true) {
-
-#if UNITY_STANDALONE || UNITY_EDITOR
-			if (Input.GetMouseButtonDown (0)) { // for test purpose
+			if (Input.GetMouseButtonDown (0)) {
 				ScoreManager.Instance.PlayerScore++;
 				PlayerTouch (ScoreManager.Instance.PlayerScore);
 			}
-#else
-			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
-				ScoreManager.Instance.PlayerScore++;
-				PlayerTouch (ScoreManager.Instance.PlayerScore);
-			}
-#endif
 			yield return null;
 		}
 	}
