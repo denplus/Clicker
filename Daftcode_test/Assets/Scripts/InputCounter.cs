@@ -28,7 +28,7 @@ public class InputCounter : SingeltonMonoBehaviour<InputCounter> {
 				PlayerTouch (ScoreManager.Instance.PlayerScore);
 			}
 #elif UNITY_IOS || UNITY_ANDROID
-			if (Input.touchCount > 0){
+			if (Input.GetTouch(0).phase == TouchPhase.Began) {
 				ScoreManager.Instance.PlayerScore++;
 				PlayerTouch (ScoreManager.Instance.PlayerScore);
 			}
